@@ -9,6 +9,7 @@
 #import "TRHomeViewController.h"
 
 #import "TRScanViewController.h"
+#import "TRBannerViewController.h"
 
 @interface TRHomeViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -23,7 +24,7 @@
     [super viewDidLoad];
     
     [self.view addSubview:self.tableView];
-    self.dataSource = @[@"QRCode"];
+    self.dataSource = @[@"QRCode",@"Banner"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -51,6 +52,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) { // 二维码扫描
         TRScanViewController *vc = [TRScanViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if (indexPath.row == 1) { // banner图
+        TRBannerViewController *vc = [TRBannerViewController new];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
