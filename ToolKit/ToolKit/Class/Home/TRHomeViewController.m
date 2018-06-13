@@ -10,6 +10,7 @@
 
 #import "TRScanViewController.h"
 #import "TRBannerViewController.h"
+#import "TRNetworkViewController.h"
 
 @interface TRHomeViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -24,7 +25,7 @@
     [super viewDidLoad];
     
     [self.view addSubview:self.tableView];
-    self.dataSource = @[@"QRCode",@"Banner"];
+    self.dataSource = @[@"QRCode",@"Banner", @"Network"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -55,6 +56,9 @@
         [self.navigationController pushViewController:vc animated:YES];
     } else if (indexPath.row == 1) { // banner图
         TRBannerViewController *vc = [TRBannerViewController new];
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if (indexPath.row == 2) { // 网络层相关
+        TRNetworkViewController *vc = [TRNetworkViewController new];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

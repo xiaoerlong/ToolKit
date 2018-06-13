@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "AppDelegate+TRRootController.h"
+#import "YTKNetwork.h"
+#import "TRHTTP.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +23,11 @@
     _window.backgroundColor = [UIColor whiteColor];
     [self setRootController];
     [_window makeKeyAndVisible];
+    
+    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+    config.baseUrl = BaseUrl;
+    config.cdnUrl = CdnUrl;
+    
     return YES;
 }
 
